@@ -23,6 +23,11 @@ namespace malevaNewsV2.Controllers
             return Ok(await _postServices.GetAllPosts());
         }
 
+        [HttpGet("Get/{id}")]
+        public async Task<ActionResult<ServiceResponse<List<Post>>>> GetById(int id) {
+          return Ok(await _postServices.GetPostById(id));
+        }
+
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<PostDto>>>> AddPost(PostDto newPost) {
             return Ok(await _postServices.AddPost(newPost));
