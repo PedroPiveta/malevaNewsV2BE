@@ -19,7 +19,7 @@ namespace malevaNewsV2.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<List<PostDto>>>> Get() {
+        public async Task<ActionResult<ServiceResponse<List<GetPostDto>>>> Get() {
             return Ok(await _postServices.GetAllPosts());
         }
 
@@ -29,7 +29,7 @@ namespace malevaNewsV2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<PostDto>>>> AddPost(PostDto newPost) {
+        public async Task<ActionResult<ServiceResponse<List<GetPostDto>>>> AddPost(CreatePostDto newPost) {
             return Ok(await _postServices.AddPost(newPost));
         }
     }

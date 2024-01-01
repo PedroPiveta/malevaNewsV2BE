@@ -7,10 +7,10 @@ namespace malevaNewsV2.Services
 {
     public interface IPostServices
     {
-        Task<ServiceResponse<List<PostDto>>> GetAllPosts();
-        Task<ServiceResponse<PostDto>> GetPostById(int id);
-        Task<ServiceResponse<List<PostDto>>> AddPost(PostDto newPost);
-        Task<ServiceResponse<PostDto>> UpdatePost(PostDto updatedPost);
-        Task<ServiceResponse<List<PostDto>>> DeletePost(int id);
+        Task<ServiceResponse<List<GetPostDto>>> GetAllPosts();
+        Task<ServiceResponse<GetPostDto>> GetPostById(int id);
+        Task<ServiceResponse<List<GetPostDto>>> AddPost(CreatePostDto newPost);
+        Task<ServiceResponse<GetPostDto>> UpdatePost(CreatePostDto updatedPost);
+        Task<ServiceResponse<List<GetPostDto>>> DeletePost(int id);
     }
 }

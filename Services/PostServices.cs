@@ -22,9 +22,9 @@ namespace malevaNewsV2.Services
             _context = context;
         }
 
-        public async Task<ServiceResponse<List<PostDto>>> AddPost(PostDto newPost)
+        public async Task<ServiceResponse<List<GetPostDto>>> AddPost(CreatePostDto newPost)
         {
-            var serviceResponse = new ServiceResponse<List<PostDto>>();
+            var serviceResponse = new ServiceResponse<List<GetPostDto>>();
             try 
             {
                 var post = _mapper.Map<Post>(newPost);
@@ -32,7 +32,7 @@ namespace malevaNewsV2.Services
                 await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.Posts
-                    .Select(p => _mapper.Map<PostDto>(p))
+                    .Select(p => _mapper.Map<GetPostDto>(p))
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -43,25 +43,25 @@ namespace malevaNewsV2.Services
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<List<PostDto>>> DeletePost(int id)
+        public Task<ServiceResponse<List<GetPostDto>>> DeletePost(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponse<List<PostDto>>> GetAllPosts()
+        public async Task<ServiceResponse<List<GetPostDto>>> GetAllPosts()
         {
-            var serviceResponse = new ServiceResponse<List<PostDto>>();
+            var serviceResponse = new ServiceResponse<List<GetPostDto>>();
             var dbPosts = await _context.Posts.ToListAsync();
-            serviceResponse.Data = dbPosts.Select(p => _mapper.Map<PostDto>(p)).ToList();
+            serviceResponse.Data = dbPosts.Select(p => _mapper.Map<GetPostDto>(p)).ToList();
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<PostDto>> GetPostById(int id)
+        public Task<ServiceResponse<GetPostDto>> GetPostById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<PostDto>> UpdatePost(PostDto updatedPost)
+        public Task<ServiceResponse<GetPostDto>> UpdatePost(CreatePostDto updatedPost)
         {
             throw new NotImplementedException();
         }

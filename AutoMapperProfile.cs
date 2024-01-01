@@ -10,8 +10,8 @@ namespace malevaNewsV2
     {
         public AutoMapperProfile()
         {
-            CreateMap<Post, PostDto>();
-            CreateMap<PostDto, Post>();
+            CreateMap<Post, GetPostDto>();
+            CreateMap<CreatePostDto, Post>();
         }
     }
 }
